@@ -14,7 +14,11 @@ login=$(echo "$user_data" | awk -F ',' {'print $1'})
 
 echo "Delete user with login: $login ..."
 
-# commands...
+if [ "$1" == "wb" ];
+then
+path="/opt/$login.tar"
+tar --directory="/home" -cf $path $login &>> /dev/null
+fi
 
 #if [ ??? ];then
 # make backup of user home
